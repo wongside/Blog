@@ -1,0 +1,33 @@
+language: node_js
+node_js: stable
+
+cache:
+    apt: true
+    directories:
+        - node_modules
+
+before_install:
+    - npm install hexo-cli -g
+    - git clone ${Generate_REF} wongside/Hexo-generate-blog
+    - cp -rf wongside/Blog/* wongside/Hexo-generate-blog/public/
+    - cd wongside/Hexo-generate-blog/
+
+install:
+  - npm install
+  - npm install hexo-deployer-git --save
+
+script:
+  - hexo clean
+  - hexo g
+  - hexo d
+
+after_script: 
+  - ls
+
+branches:
+  only:
+    - master
+env:
+ global:
+   - GH_REF: https://${github_token}@github.com/wongside/wongside.github.io.git
+   - Generate_REF: https://${github_token}@github.com/wongside/Hexo-generate-blog.git

@@ -21,17 +21,29 @@ script:
   # - hexo d
 
 after_script: 
-  - git clone ${GT_REF} hexo-public
-  - cp -rf public/* hexo-public/
+  - git clone ${GT_REF} hexo-gitee
+  - cp -rf public/* hexo-gitee/
   - ls public
   - ls source/_posts
-  - ls hexo-public
-  - cd hexo-public
+  - ls hexo-gitee
+  - cd hexo-gitee
   - git config user.name "wongside"
   - git config user.email "wongside@163.com"
   - git add .
   - git commit -am "Travis CI Auto Builder..."
-  - git push origin master 
+  - git push origin master
+  - cd ../ # 再次部署到github
+  - git clone ${GH_REF} hexo-github
+  - cp -rf public/* hexo-github/
+  - ls public
+  - ls source/_posts
+  - ls hexo-github
+  - cd hexo-github
+  - git config user.name "wongside"
+  - git config user.email "wongside@163.com"
+  - git add .
+  - git commit -am "Travis CI Auto Builder..."
+  - git push origin master
 
 branches:
   only:

@@ -36,6 +36,6 @@ branches:
     - master
 env:
  global:
-   - GT_REF: https://${gitee_token}@gitee.com/wongside/wongside.git
+   - GT_REF: https://wongside:${gitee_token}@gitee.com/wongside/wongside.git
    - GH_REF: https://${github_token}@github.com/wongside/wongside.github.io.git
    - Generate_REF: https://${github_token}@github.com/wongside/Hexo-generate-blog.git

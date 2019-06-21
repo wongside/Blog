@@ -10,7 +10,8 @@ before_install:
     - npm install hexo-cli -g
     - cd ../../
     - git clone ${Generate_REF} wongside/Hexo-generate-blog
-    - ls
+    - ls wongside
+    - mkdir wongside/Hexo-generate-blog/public
     - cp -rf wongside/Blog/* wongside/Hexo-generate-blog/public/
     - cd wongside/Hexo-generate-blog/
 

@@ -21,10 +21,10 @@ script:
   # - hexo d
 
 after_script: 
-  - ls
   - git clone ${GT_REF} hexo-public
   - cp -rf public/* hexo-public/
   - cd hexo-public
+  - ls
   - git config user.name "wongside"
   - git config user.email "wongside@163.com"
   - git add .
@@ -36,6 +36,6 @@ branches:
     - master
 env:
  global:
-   - GT_REF: https://wongside:${gitee_token}@gitee.com/wongside/wongside.git
-   - GH_REF: https://${github_token}@github.com/wongside/wongside.github.io.git
+   - GT_REF: https://wongside:${gitee_token}@gitee.com/wongside/wongside.git # gitee
+   - GH_REF: https://${github_token}@github.com/wongside/wongside.github.io.git # github
    - Generate_REF: https://${github_token}@github.com/wongside/Hexo-generate-blog.git

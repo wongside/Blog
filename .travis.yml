@@ -8,7 +8,7 @@ before_install:
     - git clone ${Generate_REF} wongside/Hexo-generate-blog
     - ls wongside
     # - mkdir wongside/Hexo-generate-blog/public
-    - cp -rf wongside/Blog/* wongside/Hexo-generate-blog/source/_posts
+    - cp -rf wongside/Blog/* wongside/Hexo-generate-blog/source/_posts/
     - cd wongside/Hexo-generate-blog/
 
 install:
@@ -24,9 +24,9 @@ after_script:
   - git clone ${GT_REF} hexo-public
   - cp -rf public/* hexo-public/
   - ls public
+  - ls source/_posts
   - ls hexo-public
   - cd hexo-public
-
   - git config user.name "wongside"
   - git config user.email "wongside@163.com"
   - git add .

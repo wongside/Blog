@@ -19,23 +19,24 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node_version: [12.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Checkout theme repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.THEME_REPO }}
-          ref: ${{ env.THEME_BRANCH }}
-          path: themes/concise
+#       - name: Checkout theme repo
+#         uses: actions/checkout@v2
+#         with:
+#           repository: ${{ env.THEME_REPO }}
+#           ref: ${{ env.THEME_BRANCH }}
+#           path: themes/concise
 
-      - name: Checkout deploy repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.DEPLOY_REPO }}
-          ref: ${{ env.DEPLOY_BRANCH }}
-          path: .deploy_git
+#       - name: Checkout deploy repo
+#         uses: actions/checkout@v2
+#         with:
+#           repository: ${{ env.DEPLOY_REPO }}
+#           ref: ${{ env.DEPLOY_BRANCH }}
+#           path: .deploy_git
 
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v1
@@ -53,10 +54,12 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
-          
+
+      - run: npm install hexo-cli
+
       - name: test
-        run: |
-          pwd
-          ls
-          cd ..
-          ls
+        run: pwd
+        
+      - run: ls
+      - run: cd ..
+      - run: ls

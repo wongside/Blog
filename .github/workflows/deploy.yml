@@ -67,6 +67,7 @@ jobs:
           ls -al
           npm install hexo-cli -g --no-optional
           npm install --no-optional
+          npm install --save hexo-theme-fluid
 
       - name: Generate Hexo
         working-directory: Hexo-generate-blog

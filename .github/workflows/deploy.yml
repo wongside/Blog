@@ -30,19 +30,11 @@ jobs:
           repository: wongside/Hexo-generate-blog
           path: Hexo-generate-blog
 
-#       - name: Checkout theme repo
-#         uses: actions/checkout@v2
-#         with:
-#           repository: ${{ env.THEME_REPO }}
-#           ref: ${{ env.THEME_BRANCH }}
-#           path: themes/concise
-
-#       - name: Checkout deploy repo
-#         uses: actions/checkout@v2
-#         with:
-#           repository: ${{ env.DEPLOY_REPO }}
-#           ref: ${{ env.DEPLOY_BRANCH }}
-#           path: .deploy_git
+      - name: Checkout html repo
+        uses: actions/checkout@v2
+        with:
+          repository: wongside/wongside.github.io
+          path: wongside.github.io
 
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v1
@@ -61,38 +53,27 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
 
-      - name: test
-        working-directory: Hexo-generate-blog
-        run: |
-            pwd
-            ls -al
-
-      - name: test1
+      - name: Delete unused files
         working-directory: Blog-file
         run: |
             rm -rf .git
             rm -rf .github
 
-
       - name: Install hexo
         working-directory: Hexo-generate-blog
         run: |
-             npm install hexo-cli -g --no-optional
-             npm install --no-optional
-             cp -rf ../Blog-file/* source/_posts/
-             npx hexo g
-#      - name: test
-#        working-directory: build
-#        run: |
-#            pwd
-#            ls Hexo-generate-blog
-#            npx hexo init
-#            npx hexo g
-#      - run: ls -al
-#
-#      - name: test
-#        run: pwd
-#
-#      - run: ls
-#      - run: cd ..
-#      - run: ls
+          npm install hexo-cli -g --no-optional
+          npm install --no-optional
+          cp -rf ../Blog-file/* source/_posts/
+          npx hexo clean
+          npx hexo g
+
+      - name: update
+        run: |
+          cp -rf Hexo-generate-blog/public/* wongside.github.io/
+
+      - name: update
+        run: |
+          git add .
+          git commit -m "auto generate hexo blog by github actions"
+          git push origin master

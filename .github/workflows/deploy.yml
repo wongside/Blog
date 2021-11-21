@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: wongside/Hexo-generate-blog
-          path: ../Hexo-generate-blog
+          path: Hexo-generate-blog
 
 #       - name: Checkout theme repo
 #         uses: actions/checkout@v2
@@ -58,6 +58,10 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
+
+      - name: test
+        working-directory: Hexo-generate-blog
+        run: pwd
 
       - name: Install hexo
         working-directory: ../Hexo-generate-blog

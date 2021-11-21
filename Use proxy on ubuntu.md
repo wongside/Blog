@@ -1,7 +1,7 @@
 ---
 title: Use proxy on ubuntu
 date: 2021-11-21 16:37:36
-tags:
+tags: ubuntu
 ---
 
 # Use proxy on ubuntu

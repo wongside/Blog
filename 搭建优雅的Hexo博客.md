@@ -1,5 +1,5 @@
 ---
-title: 搭建优雅得Hexo博客
+title: 搭建优雅的Hexo博客
 date: 2019-06-21 13:30:36
 tags:
 ---

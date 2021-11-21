@@ -50,10 +50,9 @@ jobs:
           echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
-          ls -al ~/.ssh/
-          cat ~/.ssh/known_hosts
 
       - name: Delete unused files
         working-directory: Blog-file
@@ -76,23 +75,17 @@ jobs:
           npx hexo clean
           npx hexo g
           cp -rf public/* ../wongside.github.io/
+          git add .
+          git commit -m "auto generate hexo blog by github actions"
 
       - name: Update github repo
         working-directory: wongside.github.io
         run: |
           git remote set-url origin git@github.com:wongside/wongside.github.io.git
-          git add .
-          git commit -m "auto generate hexo blog by github actions"
-          git config user.name "wongside"
-          git config user.email "wongside@163.com"
           git push origin master
 
       - name: Update gitee repo
         working-directory: wongside.github.io
         run: |
           git remote set-url origin git@gitee.com:wongside/wongside.git
-          git add .
-          git commit -m "auto generate hexo blog by github actions"
-          git config user.name "wongside"
-          git config user.email "wongside@163.com"
           git push origin master

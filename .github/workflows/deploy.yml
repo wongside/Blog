@@ -70,16 +70,16 @@ jobs:
       - name: test1
         working-directory: Blog-file
         run: |
-            pwd
-            ls -al
+            rm -rf .git
+            rm -rf .github
 
 
       - name: Install hexo
-        working-directory: ../Hexo-generate-blog
+        working-directory: Hexo-generate-blog
         run: |
              npm install hexo-cli -g --no-optional
              npm install --no-optional
-             ls -al
+             cp -rf ../Blog-file/* source/_posts/
              npx hexo g
 #      - name: test
 #        working-directory: build

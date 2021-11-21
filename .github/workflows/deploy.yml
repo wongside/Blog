@@ -80,6 +80,7 @@ jobs:
         working-directory: wongside.github.io
         run: |
           ls -al
+          git remote -v
           git add .
           git commit -m "auto generate hexo blog by github actions"
           git config user.name "wongside"

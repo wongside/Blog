@@ -57,8 +57,9 @@ jobs:
 
       - run: npm install hexo-cli -g --no-optional
       - run: npm install --no-optional
+      - run: mkdir build
       - name: test
-        working-directory: buid
+        working-directory: build
         run: |
             pwd
             npx hexo init

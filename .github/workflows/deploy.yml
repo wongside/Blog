@@ -56,12 +56,14 @@ jobs:
       - name: Delete unused files
         working-directory: Blog-file
         run: |
-            rm -rf .git
-            rm -rf .github
+          ls -al
+          rm -rf .git
+          rm -rf .github
 
       - name: Install hexo
         working-directory: Hexo-generate-blog
         run: |
+          ls -al
           npm install hexo-cli -g --no-optional
           npm install --no-optional
           cp -rf ../Blog-file/* source/_posts/
@@ -73,7 +75,9 @@ jobs:
           cp -rf Hexo-generate-blog/public/* wongside.github.io/
 
       - name: update
+        working-directory: wongside.github.io
         run: |
+          ls -al
           git add .
           git commit -m "auto generate hexo blog by github actions"
           git push origin master

@@ -75,6 +75,10 @@ jobs:
           npx hexo clean
           npx hexo g
           cp -rf public/* ../wongside.github.io/
+
+      - name: Git commit
+        working-directory: wongside.github.io
+        run: |
           git add .
           git commit -m "auto generate hexo blog by github actions"
 

@@ -68,20 +68,29 @@ jobs:
           ls -al
           npm install hexo-cli -g --no-optional
           npm install --no-optional
+
+      - name: Generate Hexo
+        working-directory: Hexo-generate-blog
+        run: |
           cp -rf ../Blog-file/* source/_posts/
           npx hexo clean
           npx hexo g
+          cp -rf public/* ../wongside.github.io/
 
-      - name: update
-        run: |
-          cp -rf Hexo-generate-blog/public/* wongside.github.io/
-
-      - name: update
+      - name: Update github repo
         working-directory: wongside.github.io
         run: |
-          ls -al
-          git remote -v
           git remote set-url origin git@github.com:wongside/wongside.github.io.git
+          git add .
+          git commit -m "auto generate hexo blog by github actions"
+          git config user.name "wongside"
+          git config user.email "wongside@163.com"
+          git push origin master
+
+      - name: Update gitee repo
+        working-directory: wongside.github.io
+        run: |
+          git remote set-url origin git@gitee.com:wongside/wongside.git
           git add .
           git commit -m "auto generate hexo blog by github actions"
           git config user.name "wongside"

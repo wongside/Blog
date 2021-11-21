@@ -69,7 +69,7 @@ jobs:
         run: |
             pwd
             ls ../../Hexo-generate-blog
-          npx hexo init
+            npx hexo init
             npx hexo g
       - run: ls -al
 

@@ -58,6 +58,7 @@ jobs:
       - run: npm install hexo-cli -g --no-audit
       - run: npm -v
       - run: node -v
+      - run: npm install --no-audit
       - run: ls -al
       - run: npx hexo init
       - run: npx hexo g

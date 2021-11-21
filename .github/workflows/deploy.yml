@@ -56,6 +56,8 @@ jobs:
           git config --global user.email $GIT_EMAIL
 
       - run: npm install hexo-cli
+      - run: npm fund
+      - run: ls -al
       - run: npx hexo init
       - run: npx hexo g
       - run: ls -al

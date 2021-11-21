@@ -60,7 +60,7 @@ jobs:
       - name: test
         working-directory: buid
         run: |
-            mkdir build && cd build
+            pwd
             npx hexo init
             npx hexo g
       - run: ls -al

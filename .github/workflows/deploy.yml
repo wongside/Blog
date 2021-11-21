@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Checkout tools repo
+        uses: actions/checkout@v2
+        with:
+          repository: wongside/Hexo-generate-blog
+          path: ../../Hexo-generate-blog
+
 #       - name: Checkout theme repo
 #         uses: actions/checkout@v2
 #         with:
@@ -62,7 +68,8 @@ jobs:
         working-directory: build
         run: |
             pwd
-            npx hexo init
+            ls ../../Hexo-generate-blog
+          npx hexo init
             npx hexo g
       - run: ls -al
 

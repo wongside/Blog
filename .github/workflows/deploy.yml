@@ -82,4 +82,6 @@ jobs:
           ls -al
           git add .
           git commit -m "auto generate hexo blog by github actions"
+          git config user.name "wongside"
+          git config user.email "wongside@163.com"
           git push origin master

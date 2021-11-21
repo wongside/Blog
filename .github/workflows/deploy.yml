@@ -71,6 +71,7 @@ jobs:
       - name: Generate Hexo
         working-directory: Hexo-generate-blog
         run: |
+          mkdir -p source/_posts/
           cp -rf ../Blog-file/* source/_posts/
           npx hexo clean
           npx hexo g

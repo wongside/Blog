@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout Blog
         uses: actions/checkout@v2
+        with:
+          path: Blog-file
 
       - name: Checkout Hexo repo
         uses: actions/checkout@v2
@@ -61,7 +63,16 @@ jobs:
 
       - name: test
         working-directory: Hexo-generate-blog
-        run: pwd
+        run: |
+            pwd
+            ls -al
+
+      - name: test1
+        working-directory: Blog-file
+        run: |
+            pwd
+            ls -al
+
 
       - name: Install hexo
         working-directory: ../Hexo-generate-blog

@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: wongside/Hexo-generate-blog
-          path: ../../Hexo-generate-blog
+          path: Hexo-generate-blog
 
 #       - name: Checkout theme repo
 #         uses: actions/checkout@v2
@@ -68,7 +68,7 @@ jobs:
         working-directory: build
         run: |
             pwd
-            ls ../../Hexo-generate-blog
+            ls Hexo-generate-blog
             npx hexo init
             npx hexo g
       - run: ls -al

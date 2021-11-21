@@ -4,11 +4,9 @@ on:
       - master
 
 env:
-  GIT_USER: Sanonz
-  GIT_EMAIL: sanonz@126.com
-  THEME_REPO: sanonz/hexo-theme-concise
-  THEME_BRANCH: master
-  DEPLOY_REPO: sanonz/sanonz.github.io
+  GIT_USER: Side
+  GIT_EMAIL: sidew@qq.com
+  DEPLOY_REPO: wongside/wongside.github.io
   DEPLOY_BRANCH: master
 
 jobs:
@@ -21,10 +19,10 @@ jobs:
         node_version: [12.x]
 
     steps:
-      - name: Checkout
+      - name: Checkout Blog
         uses: actions/checkout@v2
 
-      - name: Checkout tools repo
+      - name: Checkout Hexo repo
         uses: actions/checkout@v2
         with:
           repository: wongside/Hexo-generate-blog
@@ -61,17 +59,21 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
 
-      - run: npm install hexo-cli -g --no-optional
-      - run: npm install --no-optional
-      - run: mkdir build
-      - name: test
-        working-directory: build
+      - name: Install hexo
+        working-directory: Hexo-generate-blog
         run: |
-            pwd
-            ls Hexo-generate-blog
-            npx hexo init
-            npx hexo g
-      - run: ls -al
+             npm install hexo-cli -g --no-optional
+             npm install --no-optional
+             ls -al
+             npx hexo g
+#      - name: test
+#        working-directory: build
+#        run: |
+#            pwd
+#            ls Hexo-generate-blog
+#            npx hexo init
+#            npx hexo g
+#      - run: ls -al
 
       - name: test
         run: pwd

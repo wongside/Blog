@@ -1,3 +1,9 @@
+---
+title: Shell
+date: 2021-11-25 13:11:00
+tags: 学习
+---
+
 # shell学习
 
 * shell比较快

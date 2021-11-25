@@ -1,3 +1,10 @@
+---
+title: Ubuntu Nvidia 驱动安装与卸载
+date: 2021-11-25 13:11:00
+tags: 驱动安装
+
+---
+
 # Ubuntu Nvidia 驱动安装与卸载
 
 
